@@ -7,6 +7,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
         body {
             font-family: 'Fredoka One', cursive;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
         .glow-on-hover:hover {
             box-shadow: 0 0 10px 2px rgba(255, 20, 147, 0.8);
@@ -46,40 +51,49 @@
                 opacity: 1;
             }
         }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
     </style>
 </head>
-<body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
-    <div class="bg-white w-full h-1/2 rounded-b-full flex flex-col items-center justify-center shadow-lg">
-        <div class="bg-gray-300 w-40 h-40 rounded-full shadow-md"></div>
-        <p id="pixelDogsCount" class="text-gray-700 text-3xl mt-4 font-bold">89,472 PixelDogs</p>
-        <div class="bg-white w-3/4 mt-4 p-6 rounded-lg flex flex-col items-center shadow-md">
-            <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full mb-4 font-semibold shadow-sm hover:bg-gray-300 transition duration-300">Daily Tasks..!</button>
-            <div class="bg-gray-200 w-full p-4 rounded-lg flex justify-between items-center mb-4 shadow-sm glow-on-hover transition duration-300">
-                <p class="text-gray-700 font-medium">Follow Our Youtube!</p>
-                <button class="bg-gray-300 text-gray-700 px-4 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300">Check</button>
-            </div>
-            <div class="bg-gray-200 w-full p-4 rounded-lg flex justify-between items-center mb-4 shadow-sm glow-green-on-hover transition duration-300">
-                <p class="text-gray-700 font-medium">Follow Our Twitter!</p>
-                <button class="bg-gray-300 text-gray-700 px-4 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300">Check</button>
-            </div>
-            <div class="bg-gray-200 w-full p-4 rounded-lg flex justify-between items-center shadow-sm glow-blue-on-hover transition duration-300">
-                <p class="text-gray-700 font-medium">Join Our Telegram!</p>
-                <button class="bg-gray-300 text-gray-700 px-4 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300">Check</button>
+<body class="bg-gray-100">
+    <div class="content">
+        <div class="bg-white w-full rounded-b-3xl flex flex-col items-center justify-center shadow-lg p-4">
+            <div class="bg-gray-300 w-24 h-24 md:w-32 md:h-32 rounded-full shadow-md"></div>
+            <p id="pixelDogsCount" class="text-gray-700 text-2xl md:text-3xl mt-4 font-bold">89,472 PixelDogs</p>
+            <div class="w-full mt-4 p-4 rounded-lg flex flex-col items-center">
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full mb-4 font-semibold shadow-sm hover:bg-gray-300 transition duration-300 text-sm md:text-base">Daily Tasks..!</button>
+                <div class="bg-gray-200 w-full p-3 rounded-lg flex justify-between items-center mb-3 shadow-sm glow-on-hover transition duration-300">
+                    <p class="text-gray-700 font-medium text-sm md:text-base">Follow Our Youtube!</p>
+                    <button class="bg-gray-300 text-gray-700 px-3 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300 text-xs md:text-sm">Check</button>
+                </div>
+                <div class="bg-gray-200 w-full p-3 rounded-lg flex justify-between items-center mb-3 shadow-sm glow-green-on-hover transition duration-300">
+                    <p class="text-gray-700 font-medium text-sm md:text-base">Follow Our Twitter!</p>
+                    <button class="bg-gray-300 text-gray-700 px-3 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300 text-xs md:text-sm">Check</button>
+                </div>
+                <div class="bg-gray-200 w-full p-3 rounded-lg flex justify-between items-center shadow-sm glow-blue-on-hover transition duration-300">
+                    <p class="text-gray-700 font-medium text-sm md:text-base">Join Our Telegram!</p>
+                    <button class="bg-gray-300 text-gray-700 px-3 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300 text-xs md:text-sm">Check</button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="bg-white w-full py-4 flex justify-around items-center shadow-t-lg">
+    <div class="bg-white w-full py-2 flex justify-around items-center shadow-t-lg">
         <a href="#" class="flex flex-col items-center text-gray-700 hover:text-gray-900 transition duration-300">
-            <i class="fas fa-home text-2xl"></i>
-            <p class="font-medium">Home</p>
+            <i class="fas fa-home text-xl"></i>
+            <p class="font-medium text-xs">Home</p>
         </a>
         <a href="#" class="flex flex-col items-center text-gray-700 hover:text-gray-900 transition duration-300">
-            <i class="fas fa-users text-2xl"></i>
-            <p class="font-medium">Friends</p>
+            <i class="fas fa-users text-xl"></i>
+            <p class="font-medium text-xs">Friends</p>
         </a>
         <a href="#" class="flex flex-col items-center text-gray-700 hover:text-gray-900 transition duration-300">
-            <i class="fas fa-wallet text-2xl"></i>
-            <p class="font-medium">Wallet</p>
+            <i class="fas fa-wallet text-xl"></i>
+            <p class="font-medium text-xs">Wallet</p>
         </a>
     </div>
     <script>
