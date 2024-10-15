@@ -1,0 +1,119 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        body {
+            font-family: 'Fredoka One', cursive;
+        }
+        .glow-on-hover:hover {
+            box-shadow: 0 0 10px 2px rgba(255, 20, 147, 0.8);
+            transform: scale(1.05);
+        }
+        .glow-green-on-hover:hover {
+            box-shadow: 0 0 10px 2px rgba(0, 255, 0, 0.8);
+            transform: scale(1.05);
+        }
+        .glow-blue-on-hover:hover {
+            box-shadow: 0 0 10px 2px rgba(0, 0, 255, 0.8);
+            transform: scale(1.05);
+        }
+        .slide-up {
+            animation: slide-up 0.5s ease-in-out;
+        }
+        .slide-down {
+            animation: slide-down 0.5s ease-in-out;
+        }
+        @keyframes slide-up {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-down {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
+    <div class="bg-white w-full h-1/2 rounded-b-full flex flex-col items-center justify-center shadow-lg">
+        <div class="bg-gray-300 w-40 h-40 rounded-full shadow-md"></div>
+        <p id="pixelDogsCount" class="text-gray-700 text-3xl mt-4 font-bold">89,472 PixelDogs</p>
+        <div class="bg-white w-3/4 mt-4 p-6 rounded-lg flex flex-col items-center shadow-md">
+            <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full mb-4 font-semibold shadow-sm hover:bg-gray-300 transition duration-300">Daily Tasks..!</button>
+            <div class="bg-gray-200 w-full p-4 rounded-lg flex justify-between items-center mb-4 shadow-sm glow-on-hover transition duration-300">
+                <p class="text-gray-700 font-medium">Follow Our Youtube!</p>
+                <button class="bg-gray-300 text-gray-700 px-4 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300">Check</button>
+            </div>
+            <div class="bg-gray-200 w-full p-4 rounded-lg flex justify-between items-center mb-4 shadow-sm glow-green-on-hover transition duration-300">
+                <p class="text-gray-700 font-medium">Follow Our Twitter!</p>
+                <button class="bg-gray-300 text-gray-700 px-4 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300">Check</button>
+            </div>
+            <div class="bg-gray-200 w-full p-4 rounded-lg flex justify-between items-center shadow-sm glow-blue-on-hover transition duration-300">
+                <p class="text-gray-700 font-medium">Join Our Telegram!</p>
+                <button class="bg-gray-300 text-gray-700 px-4 py-1 rounded-full font-semibold shadow-sm hover:bg-gray-400 transition duration-300">Check</button>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white w-full py-4 flex justify-around items-center shadow-t-lg">
+        <a href="#" class="flex flex-col items-center text-gray-700 hover:text-gray-900 transition duration-300">
+            <i class="fas fa-home text-2xl"></i>
+            <p class="font-medium">Home</p>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-700 hover:text-gray-900 transition duration-300">
+            <i class="fas fa-users text-2xl"></i>
+            <p class="font-medium">Friends</p>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-700 hover:text-gray-900 transition duration-300">
+            <i class="fas fa-wallet text-2xl"></i>
+            <p class="font-medium">Wallet</p>
+        </a>
+    </div>
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function animateCountChange() {
+            const countElement = document.getElementById('pixelDogsCount');
+            const randomCount = getRandomInt(10234, 89690);
+            const currentCount = parseInt(countElement.textContent.replace(/,/g, '').split(' ')[0]);
+
+            const increment = (randomCount - currentCount) / 100;
+            let current = currentCount;
+
+            const interval = setInterval(() => {
+                current += increment;
+                countElement.textContent = `${Math.floor(current).toLocaleString()} PixelDogs`;
+
+                if ((increment > 0 && current >= randomCount) || (increment < 0 && current <= randomCount)) {
+                    clearInterval(interval);
+                    countElement.textContent = `${randomCount.toLocaleString()} PixelDogs`;
+                }
+            }, 20);
+
+            if (randomCount > currentCount) {
+                countElement.classList.remove('slide-down');
+                countElement.classList.add('slide-up');
+            } else {
+                countElement.classList.remove('slide-up');
+                countElement.classList.add('slide-down');
+            }
+        }
+
+        setInterval(animateCountChange, 5000);
+    </script>
+</body>
+</html>
